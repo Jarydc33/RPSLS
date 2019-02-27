@@ -10,11 +10,16 @@ namespace RPSLS
         PlayerBuilder Player1;
         PlayerBuilder Player2;
         ComputerBuilder CompPlayer;
-
+        List<string> Gestures;
 
         public GameRunner()
         {
-            
+            Gestures = new List<string>();
+            Gestures.Add("Rock");
+            Gestures.Add("Paper");
+            Gestures.Add("Scissors");
+            Gestures.Add("Lizard");
+            Gestures.Add("Spock");
         }
 
         public void UserChoicePlayers()
@@ -38,5 +43,7 @@ namespace RPSLS
                 Player2 = new PlayerBuilder(0);
             }
         }
+
+
     }
 }

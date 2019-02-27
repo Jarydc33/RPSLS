@@ -4,13 +4,14 @@ using System.Text;
 
 namespace RPSLS
 {
-    class ComputerBuilder
+    public class ComputerBuilder : PlayerBuilder
     {
-        int CompScore;
+        
         
         public ComputerBuilder(int InitialScore)
+            :base(InitialScore)
         {
-            CompScore = InitialScore;
+            this.Score = InitialScore;
         }
 
         public int ThrowRandomizer()

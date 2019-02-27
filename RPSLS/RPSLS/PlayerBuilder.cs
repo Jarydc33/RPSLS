@@ -4,13 +4,13 @@ using System.Text;
 
 namespace RPSLS
 {
-    class PlayerBuilder
+    public class PlayerBuilder
     {
-        int UserScore;
+        public int Score;
 
         public PlayerBuilder(int InitialScore)
         {
-            UserScore = InitialScore;
+            Score = InitialScore;
         }
     }
 }
