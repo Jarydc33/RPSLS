@@ -26,7 +26,7 @@ namespace RPSLS
             if (check) {
                 if (Choice < 1 || Choice > 5)
                 {
-                    Console.WriteLine("Tisk tisk, you are only allowed to choose between 1 and 5. Do pay attention in the future.");
+                    Console.WriteLine("Tisk tisk, you are only allowed to choose between 1 and 5. Please pay attention in the future.");
                     Gesture();
                     return 0;
                 }
