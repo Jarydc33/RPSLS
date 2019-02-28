@@ -41,12 +41,12 @@ namespace RPSLS
                         {
                             if (counter < 9)
                             {
-                                Console.WriteLine("Player 1 won because " + Gestures[ArrayField[i, 2]] + "\n");
+                                Console.WriteLine("Player 1 won because " + Gestures[ArrayField[i, 2]]);
                                 return 1;
                             }
                             else
                             {
-                                Console.WriteLine("Player 2 won because " + Gestures[ArrayField[i, 2]] + "\n");
+                                Console.WriteLine("Player 2 won because " + Gestures[ArrayField[i, 2]]);
                                 return 2;
                             }
                         }

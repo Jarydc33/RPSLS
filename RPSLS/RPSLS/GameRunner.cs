@@ -20,24 +20,35 @@ namespace RPSLS
         public void UserChoicePlayers()
         {
             Console.WriteLine("Welcome to RPSLS! Would you like to play against a (1) computer or a (2) person?");
-            int Players = int.Parse(Console.ReadLine());
+            int Players;
+            string test = Console.ReadLine();
 
-            switch (Players)
+            bool check = int.TryParse(test, out Players);
+            if (check)
             {
-                case 1:
-                    Player1 = new PlayerBuilder(0);
-                    Player2 = new ComputerBuilder(0);
-                    ThrowTime();
-                    break;
-                case 2:
-                    Player1 = new PlayerBuilder(0);
-                    Player2 = new PlayerBuilder(0);
-                    ThrowTime();
-                    break;
-                default:
-                    Console.WriteLine("I know you`re trying to break my code here (probably Nevin). Look elsewhere.");
-                    UserChoicePlayers();
-                    break;
+
+                switch (Players)
+                {
+                    case 1:
+                        Player1 = new PlayerBuilder(0);
+                        Player2 = new ComputerBuilder(0);
+                        ThrowTime();
+                        break;
+                    case 2:
+                        Player1 = new PlayerBuilder(0);
+                        Player2 = new PlayerBuilder(0);
+                        ThrowTime();
+                        break;
+                    default:
+                        Console.WriteLine("I know you`re trying to break my code here (probably Nevin). Look elsewhere.");
+                        UserChoicePlayers();
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Literally your first choice of the game and you got it wrong. You have two options.");
+                UserChoicePlayers();
             }
         }
 
@@ -70,13 +81,20 @@ namespace RPSLS
                 string NewGame;
                 if (Player1.Score > Player2.Score)
                 {
-                    Console.WriteLine("Looks like Player 1 has won the game! Congrats! Would you like to play again? Yes or no.");
-                    NewGame = Console.ReadLine();
+                    do
+                    {
+                        Console.WriteLine("Looks like Player 1 has won the game! Congrats! Would you like to play again? Yes or no.");
+                        NewGame = Console.ReadLine();
+                    } while (NewGame.ToLower() != "yes" && NewGame.ToLower() != "no");
+
                 }
                 else
                 {
-                    Console.WriteLine("Looks like Player 2 has won the game! Congrats! Would you like to play again? Yes or no.");
-                    NewGame = Console.ReadLine();
+                    do
+                    {
+                        Console.WriteLine("Looks like Player 2 has won the game! Congrats! Would you like to play again? Yes or no.");
+                        NewGame = Console.ReadLine();
+                    } while (NewGame.ToLower() != "yes" && NewGame.ToLower() != "no");
                 }
 
                 if(NewGame.ToLower() == "yes")
@@ -85,7 +103,8 @@ namespace RPSLS
                 }
                 else if(NewGame.ToLower() == "no")
                 {
-                    Console.WriteLine("Thanks for playing!");
+                    Console.WriteLine("Thanks for playing! Press any button to exit the game.");
+                    Console.ReadLine();
                     Environment.Exit(0);
                 }
             }
