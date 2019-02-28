@@ -17,7 +17,7 @@ namespace RPSLS
         public int ThrowRandomizer()
         {
             Random num = new Random();
-            int Throw = num.Next(5);
+            int Throw = num.Next(1,5);
             return Throw;
         }
     }
