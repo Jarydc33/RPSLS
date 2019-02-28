@@ -6,12 +6,24 @@ namespace RPSLS
 {
     class DetermineWinner
     {
+        List<string> Gestures;
+
         public DetermineWinner()
         {
-
+            Gestures = new List<string>();
+            Gestures.Add("Rock crushes Scissors"); //0
+            Gestures.Add("Scissors cut Paper"); //1
+            Gestures.Add("Paper covers Rock"); //2
+            Gestures.Add("Rock crushes Lizard"); //3
+            Gestures.Add("Lizard poisons Spock"); //4
+            Gestures.Add("Spock smashes Scissors"); //5
+            Gestures.Add("Scissors decapitate Lizard"); //6
+            Gestures.Add("Lizard eats Paper"); //7
+            Gestures.Add("Paper disproves Spock");//8
+            Gestures.Add("Spock vaporizes Rock");//9
         }
 
-        public void ArraySearch(int Player1Choice, int Player2Choice)
+        public int ArraySearch(int Player1Choice, int Player2Choice)
         {
             int counter = 0;
             int[,] ArrayField = new int[,] { { 1, 3, 0 }, { 1, 4, 3 }, { 2, 1, 2 }, { 2, 5, 8 },
@@ -29,24 +41,20 @@ namespace RPSLS
                         {
                             if (counter < 9)
                             {
-                                Console.WriteLine("Player 1 won because " + RPSLS.Gestures[ArrayField[i, 2]]);
-                                Player1.Score++;
-                                Console.WriteLine("Player 1`s score is now: " + Player1.Score);
-                                Console.ReadLine();
-                                Throw();
+                                Console.WriteLine("Player 1 won because " + Gestures[ArrayField[i, 2]] + "\n");
+                                return 1;
                             }
                             else
                             {
-                                Console.WriteLine("Player 2 won because " + Gestures[ArrayField[i, 2]]);
-                                Player2.Score++;
-                                Console.WriteLine("Player 2`s score is now: " + Player2.Score);
-                                Console.ReadLine();
-                                Throw();
+                                Console.WriteLine("Player 2 won because " + Gestures[ArrayField[i, 2]] + "\n");
+                                return 2;
                             }
                         }
                     }
                 }
-                counter++;
+                counter++;               
             }
+            return 0;
         }
+    }
 }

@@ -8,27 +8,13 @@ namespace RPSLS
     {
         PlayerBuilder Player1;
         PlayerBuilder Player2;
-        List<string> Gestures;
         DetermineWinner Winner;
 
               
         public GameRunner()
-        {
-            Gestures = new List<string>();
-            Gestures.Add("Rock crushes Scissors"); //0
-            Gestures.Add("Scissors cut Paper"); //1
-            Gestures.Add("Paper covers Rock"); //2
-            Gestures.Add("Rock crushes Lizard"); //3
-            Gestures.Add("Lizard poisons Spock"); //4
-            Gestures.Add("Spock smashes Scissors"); //5
-            Gestures.Add("Scissors decapitate Lizard"); //6
-            Gestures.Add("Lizard eats Paper"); //7
-            Gestures.Add("Paper disproves Spock");//8
-            Gestures.Add("Spock vaporizes Rock");//9
-            UserChoicePlayers();
-
+        {            
             Winner = new DetermineWinner();
-            
+            UserChoicePlayers();
         }
 
         public void UserChoicePlayers()
@@ -41,10 +27,12 @@ namespace RPSLS
                 case 1:
                     Player1 = new PlayerBuilder(0);
                     Player2 = new ComputerBuilder(0);
+                    ThrowTime();
                     break;
                 case 2:
                     Player1 = new PlayerBuilder(0);
                     Player2 = new PlayerBuilder(0);
+                    ThrowTime();
                     break;
                 default:
                     Console.WriteLine("I know you`re trying to break my code here (probably Nevin). Look elsewhere.");
@@ -64,7 +52,45 @@ namespace RPSLS
                 ThrowTime();
             }
 
-            Winner.ArraySearch(Player1Throw,Player2Throw); 
+            int ScoreUpdate = Winner.ArraySearch(Player1Throw,Player2Throw); 
+
+            if(ScoreUpdate == 1)
+            {
+                Player1.Score++;                
+            }
+            else
+            {
+                Player2.Score++;                
+            }
+            Console.WriteLine("Player 1`s score is: " + Player1.Score);
+            Console.WriteLine("Player 2`s score is: " + Player2.Score + "\n");
+
+            if(Player1.Score == 2 || Player2.Score == 2)
+            {
+                string NewGame;
+                if (Player1.Score > Player2.Score)
+                {
+                    Console.WriteLine("Looks like Player 1 has won the game! Congrats! Would you like to play again? Yes or no.");
+                    NewGame = Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("Looks like Player 2 has won the game! Congrats! Would you like to play again? Yes or no.");
+                    NewGame = Console.ReadLine();
+                }
+
+                if(NewGame.ToLower() == "yes")
+                {
+                    UserChoicePlayers();
+                }
+                else if(NewGame.ToLower() == "no")
+                {
+                    Console.WriteLine("Thanks for playing!");
+                    Environment.Exit(0);
+                }
+            }
+
+            ThrowTime();
         }
                     
     }
