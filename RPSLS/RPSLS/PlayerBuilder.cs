@@ -27,8 +27,8 @@ namespace RPSLS
                 if (Choice < 1 || Choice > 5)
                 {
                     Console.WriteLine("Tisk tisk, you are only allowed to choose between 1 and 5. Please pay attention in the future.");
-                    Gesture();
-                    return 0;
+                    return Gesture();
+                    
                 }
                 else
                 {
@@ -38,8 +38,8 @@ namespace RPSLS
             else
             {
                 Console.WriteLine("Ok, you have to type a number..not a word. Ugh.");
-                Gesture();
-                return 0;
+                return Gesture();
+                
             }
 
             
