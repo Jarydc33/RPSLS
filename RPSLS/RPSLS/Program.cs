@@ -7,7 +7,7 @@ namespace RPSLS
         static void Main(string[] args)
         {
             GameRunner RPSLS = new GameRunner();
-            RPSLS.UserChoicePlayers();
+            
         }
     }
 }
